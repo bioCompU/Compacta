@@ -1,7 +1,7 @@
 # Compacta
 A fast contig clustering tool
 
-[![DOI](https://zenodo.org/badge/212251636.svg)](https://zenodo.org/badge/latestdoi/212251636)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3469484.svg)](https://doi.org/10.5281/zenodo.3469484)
 
 Compacta is a software designed to reduce the number of contigs given by the assembler to a smaller set of representative sequences, preserving the information about relative expression given by the reads. Compacta output can then be employed in downstream analyses for contig identification and differential gene expression.
 
