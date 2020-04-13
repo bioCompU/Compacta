@@ -423,7 +423,7 @@ void Clusterizer::createPreclusters()
 	/* 	This variable keeps the status of all the nodes, 0 : undiscovered, 1 : in a cluster */
 	short * revisitedTrans=new short[_transList->size()]();
 	int contador=0,transcount=0;
-	Cluster * clusterRoot=new Cluster(0,_nSamples);
+	Cluster * clusterRoot=new Cluster(0,_nSamples,1);
 	Transcript* tempTrans;
 	for(auto transItr=_transList->begin();transItr!=_transList->end();transItr++)
 	{
@@ -586,7 +586,7 @@ void Clusterizer::saveToFile()
 				(_transList->getByID(node2))->setStatus(3);
 				tCounter+=2;
 			try {
-					tempCluster=new Cluster(lastTrans,_nSamples);
+					tempCluster=new Cluster(lastTrans,_nSamples,2);
 					tempCluster->addTranscript(_transList->getByID(node2));
 					tempCluster->addTranscript(_transList->getByID(node1));
 					tempClusterList->push_back(tempCluster);
@@ -833,7 +833,7 @@ void Clusterizer::saveToFile()
 		 tempClusName=(printQueue.front()).first;
 		 printQueue.pop_front();
 		 counter=0;
-		 if(tempCluster->getSubClusterSize()>0)
+		 if(tempCluster->getType()!=2)
 		 {
 		 	for(auto tranItr = tempCluster->transBegin(); tranItr != tempCluster->transEnd(); tranItr++,counter++)
 		 	{
@@ -956,7 +956,7 @@ void Clusterizer::saveToFile()
 			 printQueue.pop_front();
 			 counter=0;
 			 repTrans=NULL;
-			 if(tempCluster->getSubClusterSize()>0)
+			 if(tempCluster->getType()!=2)
 			 {
 	   		 	for(auto tranItr = tempCluster->transBegin(); tranItr != tempCluster->transEnd(); tranItr++)
 	   		 	{
@@ -988,7 +988,7 @@ void Clusterizer::saveToFile()
 			 printQueue.pop_front();
 			 counter=0;
 			 repTrans=NULL;
-			 if(tempCluster->getSubClusterSize()>0)
+			 if(tempCluster->getType()!=2)
 			 {
 	   		 	for(auto tranItr = tempCluster->transBegin(); tranItr != tempCluster->transEnd(); tranItr++)
 	   		 	{

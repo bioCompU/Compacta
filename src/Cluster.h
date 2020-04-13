@@ -36,6 +36,7 @@ class Cluster
 {
 private:
 	int _Id;
+	short _Type;
 	int _nSamples;
 	long _nReads;
 	float *_Counts;
@@ -43,8 +44,8 @@ private:
 	vector<Cluster*> _subClusters;
 
 public:
-	Cluster (int id,int samples):_Id(id), _nSamples(samples),_nReads(0){_Counts=new float[samples]();};
-	Cluster (int samples) : _nSamples(samples),_nReads(0){ _Counts=new float[samples](); }; 
+	Cluster (int id,int samples,short type):_Id(id), _nSamples(samples),_nReads(0),_Type(type){_Counts=new float[samples]();};
+	Cluster (int samples) : _nSamples(samples),_nReads(0),_Type(0){ _Counts=new float[samples](); }; 
 	~Cluster (){
 		delete[] _Counts;
 		for(auto it=_subClusters.begin();it!=_subClusters.end();it++)
@@ -76,6 +77,7 @@ public:
 	 } 
 	void setID(int id) { _Id=id; };
 	int getID() { return _Id; };
+	short getType(){return _Type;}
 	int getSubClusterSize() { return _subClusters.size(); };
 	int getNumberTranscripts() { return _transList.size(); };
 	long getNumberReads(){ return _nReads; };

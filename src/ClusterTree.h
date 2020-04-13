@@ -41,7 +41,7 @@ private:
 
 public:
 	ClusterTree (int samples,int transcripts) : _nSamples(samples), _nTranscripts(transcripts) {
-		 _root=new Cluster(0,samples);
+		 _root=new Cluster(0,samples,1);
 		  _transcriptClusterMap=new int[transcripts](); 
 	 };
 	~ClusterTree () {
